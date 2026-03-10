@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/LennZone/phase-10-scoreboard/compare/v1.0.1...v1.1.0) (2026-03-10)
+
+
+### Features
+
+* add localization support ([3a4488d](https://github.com/LennZone/phase-10-scoreboard/commit/3a4488d8ffa13a8b7e073b3ab4043870baa60b45))
+* add localization support ([1e67cd0](https://github.com/LennZone/phase-10-scoreboard/commit/1e67cd066d1b40fe88a47684106e8f93df1c5789))
+
 ## [1.0.1](https://github.com/LennZone/phase-10-scoreboard/compare/v1.0.0...v1.0.1) (2026-03-10)
 
 
