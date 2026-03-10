@@ -2,9 +2,9 @@
 
 A real-time digital scoreboard for the card game Phase 10. Replaces pen and paper with automatic phase tracking, live score sync across all players' devices, and a game history tied to your Google account.
 
-![Version](https://img.shields.io/github/package-json/v/LennZone/phase-10-score-tracker) ![License](https://img.shields.io/badge/license-MIT-blue) ![Deploy](https://img.shields.io/badge/deployed-GitHub%20Pages-green)
+![Version](https://img.shields.io/github/package-json/v/LennZone/phase-10-scoreboard) ![License](https://img.shields.io/badge/license-MIT-blue) ![Deploy](https://img.shields.io/badge/deployed-GitHub%20Pages-green)
 
-**Live:** [lennzone.github.io/phase-10-score-tracker](https://lennzone.github.io/phase-10-score-tracker/)
+**Live:** [lennzone.github.io/phase-10-scoreboard](https://lennzone.github.io/phase-10-scoreboard/)
 
 ---
 
@@ -47,8 +47,8 @@ A real-time digital scoreboard for the card game Phase 10. Replaces pen and pape
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/LennZone/phase-10-score-tracker.git
-cd phase-10-score-tracker
+git clone https://github.com/LennZone/phase-10-scoreboard.git
+cd phase-10-scoreboard
 ```
 
 ### 2. Configure environment variables
