@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Digitaler Scoreboard" },
+  "home": {
+    "signIn": "Mit Google anmelden",
+    "signingIn": "Anmelden…",
+    "signOut": "Abmelden",
+    "createGame": "Neues Spiel",
+    "joinGame": "Spiel beitreten",
+    "myGames": "Meine Spiele",
+    "activeGames": "Aktive Spiele",
+    "finishedGames": "Abgeschlossene Spiele",
+    "noGames": "Noch keine Spiele vorhanden.",
+    "saveHint": "Mit Google anmelden, um Spiele zu speichern und wiederzufinden.",
+    "you": "Du",
+    "host": "Host",
+    "create": {
+      "title": "Neues Spiel",
+      "nameLabel": "Dein Name",
+      "namePlaceholder": "Spielername",
+      "creating": "Erstelle…",
+      "create": "Erstellen",
+      "cancel": "Abbrechen"
+    },
+    "join": {
+      "title": "Spiel beitreten",
+      "codeLabel": "Spielcode",
+      "codePlaceholder": "z.B. ABC123",
+      "join": "Beitreten",
+      "cancel": "Abbrechen"
+    },
+    "delete": {
+      "title": "Spiel löschen?",
+      "confirm": "Spiel {{id}} wird unwiderruflich gelöscht.",
+      "warning": "Alle Spielerdaten und der Rundenverlauf gehen verloren.",
+      "delete": "Löschen",
+      "cancel": "Abbrechen"
+    }
+  },
+  "gameCard": {
+    "lobby": "Warteraum",
+    "active": "Läuft",
+    "finished": "Beendet",
+    "players": "{{count}} Spieler",
+    "view": "Anzeigen",
+    "join": "Beitreten",
+    "delete": "Löschen",
+    "won": "🏆 Gewonnen",
+    "youHost": "(Du: Host)"
+  },
+  "game": {
+    "notFound": "Spiel nicht gefunden",
+    "notFoundHint": "Überprüfe den Spielcode.",
+    "backHome": "← Zur Hauptseite",
+    "loading": "Laden…",
+    "round": "Runde",
+    "allReady": "Alle bereit ✓",
+    "waiting": "Warte auf {{count}} weitere…",
+    "gameStarted": "Das Spiel hat bereits begonnen. Beitritt nicht mehr möglich.",
+    "closeRound": "Runde abschließen ✓",
+    "waitingForPlayers": "Warte auf alle Spieler…",
+    "roundControls": "Runde abschließen",
+    "history": "Verlauf"
+  },
+  "lobby": {
+    "shareLink": "Link teilen",
+    "copy": "Kopieren",
+    "copied": "✓ Kopiert",
+    "hint": "Mitspieler öffnen diesen Link auf ihrem Gerät.",
+    "players": "Spieler",
+    "waitForHost": "Warte auf den Host, das Spiel zu starten…",
+    "start": "Spiel starten ({{count}} Spieler)",
+    "minPlayers": "Mindestens {{min}} Spieler erforderlich."
+  },
+  "join": {
+    "invited": "Du wurdest eingeladen!",
+    "nameLabel": "Dein Name",
+    "namePlaceholder": "Spielername",
+    "joining": "Beitrete…",
+    "join": "Spiel beitreten"
+  },
+  "roundEntry": {
+    "title": "Deine Runde",
+    "pointsLabel": "Punkte (Handkarten)",
+    "submit": "Einreichen",
+    "saving": "Speichern…",
+    "change": "Ändern",
+    "cancel": "Abbrechen",
+    "phaseCompleted": "Phase {{phase}} geschafft",
+    "phaseNotCompleted": "Phase {{phase}} nicht geschafft",
+    "below": "< {{n}} Pkt",
+    "aboveOrEqual": "≥ {{n}} Pkt",
+    "allDone": "🎉 Du hast alle Phasen abgeschlossen!"
+  },
+  "scoreCard": {
+    "pts": "Pkt",
+    "submitted": "✓ eingereicht",
+    "pending": "⏳ ausstehend",
+    "phase": "Phase",
+    "finished": "Phase 10 abgeschlossen! 🎉"
+  },
+  "scoreboard": { "title": "Scoreboard", "round": "Runde {{n}}" },
+  "hostControls": {
+    "title": "Runde abschließen",
+    "allReady": "Alle bereit ✓",
+    "waiting": "Warte auf {{count}} Spieler…",
+    "close": "Runde abschließen ✓",
+    "waitingBtn": "Warte auf alle Spieler…"
+  },
+  "winner": {
+    "won": "hat gewonnen!",
+    "score": "Phase 10 mit {{score}} Punkten.",
+    "standings": "Endstand"
+  },
+  "history": {
+    "title": "Verlauf: {{name}}",
+    "noRounds": "Noch keine Runden gespielt.",
+    "close": "Schließen",
+    "round": "Runde",
+    "points": "Punkte",
+    "phase": "Phase",
+    "total": "Gesamt",
+    "edit": "Bearbeiten"
+  },
+  "editRound": {
+    "title": "Runde {{n}} bearbeiten",
+    "points": "Punkte",
+    "phaseCompleted": "Phase geschafft",
+    "phaseNotCompleted": "Phase nicht geschafft",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "saving": "Speichern…"
+  },
+  "phases": {
+    "1": "2 Drillinge",
+    "2": "1 Drilling + 1 Vierer-Sequenz",
+    "3": "1 Vierling + 1 Vierer-Sequenz",
+    "4": "1 Siebener-Sequenz",
+    "5": "1 Achter-Sequenz",
+    "6": "1 Neuner-Sequenz",
+    "7": "2 Vierlinge",
+    "8": "7 Karten einer Farbe",
+    "9": "1 Fünfling + 1 Pärchen",
+    "10": "1 Fünfling + 1 Drilling"
+  }
+}

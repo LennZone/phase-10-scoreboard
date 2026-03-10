@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Digital Scoreboard" },
+  "home": {
+    "signIn": "Sign in with Google",
+    "signingIn": "Signing in…",
+    "signOut": "Sign out",
+    "createGame": "New Game",
+    "joinGame": "Join Game",
+    "myGames": "My Games",
+    "activeGames": "Active Games",
+    "finishedGames": "Finished Games",
+    "noGames": "No games yet.",
+    "saveHint": "Sign in with Google to save and find your games.",
+    "you": "You",
+    "host": "Host",
+    "create": {
+      "title": "New Game",
+      "nameLabel": "Your name",
+      "namePlaceholder": "Player name",
+      "creating": "Creating…",
+      "create": "Create",
+      "cancel": "Cancel"
+    },
+    "join": {
+      "title": "Join Game",
+      "codeLabel": "Game code",
+      "codePlaceholder": "e.g. ABC123",
+      "join": "Join",
+      "cancel": "Cancel"
+    },
+    "delete": {
+      "title": "Delete game?",
+      "confirm": "Game {{id}} will be permanently deleted.",
+      "warning": "All player data and round history will be lost.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    }
+  },
+  "gameCard": {
+    "lobby": "Lobby",
+    "active": "Active",
+    "finished": "Finished",
+    "players": "{{count}} players",
+    "view": "View",
+    "join": "Join",
+    "delete": "Delete",
+    "won": "🏆 Won",
+    "youHost": "(You: Host)"
+  },
+  "game": {
+    "notFound": "Game not found",
+    "notFoundHint": "Check the game code.",
+    "backHome": "← Back to home",
+    "loading": "Loading…",
+    "round": "Round",
+    "allReady": "All ready ✓",
+    "waiting": "Waiting for {{count}} more…",
+    "gameStarted": "The game has already started. Joining is no longer possible.",
+    "closeRound": "Close Round ✓",
+    "waitingForPlayers": "Waiting for all players…",
+    "roundControls": "Close Round",
+    "history": "History"
+  },
+  "lobby": {
+    "shareLink": "Share link",
+    "copy": "Copy",
+    "copied": "✓ Copied",
+    "hint": "Other players open this link on their device.",
+    "players": "Players",
+    "waitForHost": "Waiting for the host to start the game…",
+    "start": "Start Game ({{count}} players)",
+    "minPlayers": "At least {{min}} players required."
+  },
+  "join": {
+    "invited": "You've been invited!",
+    "nameLabel": "Your name",
+    "namePlaceholder": "Player name",
+    "joining": "Joining…",
+    "join": "Join Game"
+  },
+  "roundEntry": {
+    "title": "Your Round",
+    "pointsLabel": "Points (hand cards)",
+    "submit": "Submit",
+    "saving": "Saving…",
+    "change": "Change",
+    "cancel": "Cancel",
+    "phaseCompleted": "Phase {{phase}} completed",
+    "phaseNotCompleted": "Phase {{phase}} not completed",
+    "below": "< {{n}} pts",
+    "aboveOrEqual": "≥ {{n}} pts",
+    "allDone": "🎉 You have completed all phases!"
+  },
+  "scoreCard": {
+    "pts": "Pts",
+    "submitted": "✓ submitted",
+    "pending": "⏳ pending",
+    "phase": "Phase",
+    "finished": "Phase 10 completed! 🎉"
+  },
+  "scoreboard": { "title": "Scoreboard", "round": "Round {{n}}" },
+  "hostControls": {
+    "title": "Close Round",
+    "allReady": "All ready ✓",
+    "waiting": "Waiting for {{count}} player…",
+    "close": "Close Round ✓",
+    "waitingBtn": "Waiting for all players…"
+  },
+  "winner": {
+    "won": "has won!",
+    "score": "Phase 10 with {{score}} points.",
+    "standings": "Final Standings"
+  },
+  "history": {
+    "title": "History: {{name}}",
+    "noRounds": "No rounds played yet.",
+    "close": "Close",
+    "round": "Round",
+    "points": "Points",
+    "phase": "Phase",
+    "total": "Total",
+    "edit": "Edit"
+  },
+  "editRound": {
+    "title": "Edit Round {{n}}",
+    "points": "Points",
+    "phaseCompleted": "Phase completed",
+    "phaseNotCompleted": "Phase not completed",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving…"
+  },
+  "phases": {
+    "1": "2 Sets of 3",
+    "2": "1 Set of 3 + 1 Run of 4",
+    "3": "1 Set of 4 + 1 Run of 4",
+    "4": "1 Run of 7",
+    "5": "1 Run of 8",
+    "6": "1 Run of 9",
+    "7": "2 Sets of 4",
+    "8": "7 Cards of one color",
+    "9": "1 Set of 5 + 1 Pair",
+    "10": "1 Set of 5 + 1 Set of 3"
+  }
+}

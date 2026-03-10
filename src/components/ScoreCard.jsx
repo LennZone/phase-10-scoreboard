@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
-import { PLAYER_COLORS, PHASES, TOTAL_PHASES } from '../constants';
+import { useTranslation } from 'react-i18next';
+import { PLAYER_COLORS, TOTAL_PHASES } from '../constants';
 
 const RANK_ICONS = ['🥇', '🥈', '🥉'];
 
 export default function ScoreCard({ player, rank, pendingSubmission, onShowHistory }) {
+  const { t } = useTranslation();
   const color = PLAYER_COLORS[player.colorIndex ?? 0] ?? PLAYER_COLORS[0];
   const phase = Math.min(player.currentPhase, TOTAL_PHASES);
-  const phaseDesc = PHASES[phase - 1]?.desc ?? '';
   const isFinished = player.currentPhase > TOTAL_PHASES;
   const rankLabel = RANK_ICONS[rank - 1] ?? `${rank}.`;
 
@@ -16,28 +17,27 @@ export default function ScoreCard({ player, rank, pendingSubmission, onShowHisto
     <div
       className={`rounded-2xl border ${color.border} bg-gradient-to-r ${color.gradient} bg-gray-900/80 p-4 select-none`}
     >
-      {/* Top row: rank + name + score */}
       <div className="flex items-center gap-3">
-        <span className="text-xl w-8 shrink-0">{rankLabel}</span>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-bold text-white text-base truncate">{player.name}</span>
+        <span className="w-8 shrink-0 text-xl">{rankLabel}</span>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="truncate text-base font-bold text-white">{player.name}</span>
             {onShowHistory && (
               <button
                 onClick={onShowHistory}
-                className="text-xs text-gray-500 hover:text-gray-300 underline underline-offset-2"
+                className="text-xs text-gray-500 underline underline-offset-2 hover:text-gray-300"
               >
-                Verlauf
+                {t('game.history')}
               </button>
             )}
           </div>
-          <div className="text-xs text-gray-400 truncate">
-            {isFinished ? 'Phase 10 abgeschlossen! 🎉' : phaseDesc}
+          <div className="truncate text-xs text-gray-400">
+            {isFinished ? t('scoreCard.finished') : t(`phases.${phase}`)}
           </div>
         </div>
-        <div className="text-right shrink-0">
-          <div className="text-2xl font-black text-white leading-none">{player.totalScore}</div>
-          <div className="text-xs text-gray-500">Pkt</div>
+        <div className="shrink-0 text-right">
+          <div className="text-2xl font-black leading-none text-white">{player.totalScore}</div>
+          <div className="text-xs text-gray-500">{t('scoreCard.pts')}</div>
         </div>
       </div>
 
@@ -50,17 +50,16 @@ export default function ScoreCard({ player, rank, pendingSubmission, onShowHisto
               i < phase - 1 || isFinished
                 ? color.bg
                 : i === phase - 1 && !isFinished
-                ? 'bg-white/25'
-                : 'bg-gray-700'
+                  ? 'bg-white/25'
+                  : 'bg-gray-700'
             }`}
           />
         ))}
       </div>
 
-      {/* Bottom row: phase badge + submission status */}
       <div className="mt-2.5 flex items-center justify-between">
-        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${color.badge}`}>
-          Phase {phase}
+        <span className={`rounded-full px-2 py-0.5 text-xs font-bold ${color.badge}`}>
+          {t('scoreCard.phase')} {phase}
         </span>
         {pendingSubmission !== undefined && (
           <motion.span
@@ -71,7 +70,7 @@ export default function ScoreCard({ player, rank, pendingSubmission, onShowHisto
               submittedThisRound ? 'text-green-400' : 'text-yellow-500'
             }`}
           >
-            {submittedThisRound ? '✓ eingereicht' : '⏳ ausstehend'}
+            {submittedThisRound ? t('scoreCard.submitted') : t('scoreCard.pending')}
           </motion.span>
         )}
       </div>

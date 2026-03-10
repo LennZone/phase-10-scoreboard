@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Tabellone Digitale" },
+  "home": {
+    "signIn": "Accedi con Google",
+    "signingIn": "Accesso in corso…",
+    "signOut": "Esci",
+    "createGame": "Nuova partita",
+    "joinGame": "Unisciti a una partita",
+    "myGames": "Le mie partite",
+    "activeGames": "Partite attive",
+    "finishedGames": "Partite terminate",
+    "noGames": "Nessuna partita.",
+    "saveHint": "Accedi con Google per salvare e ritrovare le tue partite.",
+    "you": "Tu",
+    "host": "Host",
+    "create": {
+      "title": "Nuova partita",
+      "nameLabel": "Il tuo nome",
+      "namePlaceholder": "Nome giocatore",
+      "creating": "Creazione…",
+      "create": "Crea",
+      "cancel": "Annulla"
+    },
+    "join": {
+      "title": "Unisciti a una partita",
+      "codeLabel": "Codice partita",
+      "codePlaceholder": "es. ABC123",
+      "join": "Unisciti",
+      "cancel": "Annulla"
+    },
+    "delete": {
+      "title": "Eliminare la partita?",
+      "confirm": "La partita {{id}} verrà eliminata definitivamente.",
+      "warning": "Tutti i dati dei giocatori e la cronologia dei round andranno persi.",
+      "delete": "Elimina",
+      "cancel": "Annulla"
+    }
+  },
+  "gameCard": {
+    "lobby": "Lobby",
+    "active": "Attiva",
+    "finished": "Terminata",
+    "players": "{{count}} giocatori",
+    "view": "Visualizza",
+    "join": "Unisciti",
+    "delete": "Elimina",
+    "won": "🏆 Vinta",
+    "youHost": "(Tu: Host)"
+  },
+  "game": {
+    "notFound": "Partita non trovata",
+    "notFoundHint": "Controlla il codice partita.",
+    "backHome": "← Torna alla home",
+    "loading": "Caricamento…",
+    "round": "Round",
+    "allReady": "Tutti pronti ✓",
+    "waiting": "In attesa di {{count}} altri…",
+    "gameStarted": "La partita è già iniziata. Non è più possibile unirsi.",
+    "closeRound": "Chiudi round ✓",
+    "waitingForPlayers": "In attesa di tutti i giocatori…",
+    "roundControls": "Chiudi round",
+    "history": "Cronologia"
+  },
+  "lobby": {
+    "shareLink": "Condividi link",
+    "copy": "Copia",
+    "copied": "✓ Copiato",
+    "hint": "Gli altri giocatori aprono questo link sul loro dispositivo.",
+    "players": "Giocatori",
+    "waitForHost": "In attesa che l'host avvii la partita…",
+    "start": "Avvia partita ({{count}} giocatori)",
+    "minPlayers": "Sono necessari almeno {{min}} giocatori."
+  },
+  "join": {
+    "invited": "Sei stato invitato!",
+    "nameLabel": "Il tuo nome",
+    "namePlaceholder": "Nome giocatore",
+    "joining": "Accesso in corso…",
+    "join": "Unisciti alla partita"
+  },
+  "roundEntry": {
+    "title": "Il tuo round",
+    "pointsLabel": "Punti (carte in mano)",
+    "submit": "Invia",
+    "saving": "Salvataggio…",
+    "change": "Modifica",
+    "cancel": "Annulla",
+    "phaseCompleted": "Fase {{phase}} completata",
+    "phaseNotCompleted": "Fase {{phase}} non completata",
+    "below": "< {{n}} pt",
+    "aboveOrEqual": "≥ {{n}} pt",
+    "allDone": "🎉 Hai completato tutte le fasi!"
+  },
+  "scoreCard": {
+    "pts": "pt",
+    "submitted": "✓ inviato",
+    "pending": "⏳ in attesa",
+    "phase": "Fase",
+    "finished": "Fase 10 completata! 🎉"
+  },
+  "scoreboard": { "title": "Tabellone", "round": "Round {{n}}" },
+  "hostControls": {
+    "title": "Chiudi round",
+    "allReady": "Tutti pronti ✓",
+    "waiting": "In attesa di {{count}} giocatori…",
+    "close": "Chiudi round ✓",
+    "waitingBtn": "In attesa di tutti i giocatori…"
+  },
+  "winner": {
+    "won": "ha vinto!",
+    "score": "Fase 10 con {{score}} punti.",
+    "standings": "Classifica finale"
+  },
+  "history": {
+    "title": "Cronologia: {{name}}",
+    "noRounds": "Nessun round giocato ancora.",
+    "close": "Chiudi",
+    "round": "Round",
+    "points": "Punti",
+    "phase": "Fase",
+    "total": "Totale",
+    "edit": "Modifica"
+  },
+  "editRound": {
+    "title": "Modifica round {{n}}",
+    "points": "Punti",
+    "phaseCompleted": "Fase completata",
+    "phaseNotCompleted": "Fase non completata",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "saving": "Salvataggio…"
+  },
+  "phases": {
+    "1": "2 tris",
+    "2": "1 tris + 1 scala da 4",
+    "3": "1 poker + 1 scala da 4",
+    "4": "1 scala da 7",
+    "5": "1 scala da 8",
+    "6": "1 scala da 9",
+    "7": "2 poker",
+    "8": "7 carte dello stesso colore",
+    "9": "1 cinquina + 1 coppia",
+    "10": "1 cinquina + 1 tris"
+  }
+}

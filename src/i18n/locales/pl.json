@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Cyfrowa Tablica Wyników" },
+  "home": {
+    "signIn": "Zaloguj się przez Google",
+    "signingIn": "Logowanie…",
+    "signOut": "Wyloguj się",
+    "createGame": "Nowa gra",
+    "joinGame": "Dołącz do gry",
+    "myGames": "Moje gry",
+    "activeGames": "Aktywne gry",
+    "finishedGames": "Zakończone gry",
+    "noGames": "Brak gier.",
+    "saveHint": "Zaloguj się przez Google, aby zapisywać i odnajdywać swoje gry.",
+    "you": "Ty",
+    "host": "Host",
+    "create": {
+      "title": "Nowa gra",
+      "nameLabel": "Twoje imię",
+      "namePlaceholder": "Nazwa gracza",
+      "creating": "Tworzenie…",
+      "create": "Utwórz",
+      "cancel": "Anuluj"
+    },
+    "join": {
+      "title": "Dołącz do gry",
+      "codeLabel": "Kod gry",
+      "codePlaceholder": "np. ABC123",
+      "join": "Dołącz",
+      "cancel": "Anuluj"
+    },
+    "delete": {
+      "title": "Usunąć grę?",
+      "confirm": "Gra {{id}} zostanie trwale usunięta.",
+      "warning": "Wszystkie dane graczy i historia rund zostaną utracone.",
+      "delete": "Usuń",
+      "cancel": "Anuluj"
+    }
+  },
+  "gameCard": {
+    "lobby": "Poczekalnia",
+    "active": "Aktywna",
+    "finished": "Zakończona",
+    "players": "{{count}} graczy",
+    "view": "Podgląd",
+    "join": "Dołącz",
+    "delete": "Usuń",
+    "won": "🏆 Wygrana",
+    "youHost": "(Ty: Host)"
+  },
+  "game": {
+    "notFound": "Nie znaleziono gry",
+    "notFoundHint": "Sprawdź kod gry.",
+    "backHome": "← Strona główna",
+    "loading": "Ładowanie…",
+    "round": "Runda",
+    "allReady": "Wszyscy gotowi ✓",
+    "waiting": "Czekanie na {{count}} więcej…",
+    "gameStarted": "Gra już się rozpoczęła. Dołączenie nie jest już możliwe.",
+    "closeRound": "Zakończ rundę ✓",
+    "waitingForPlayers": "Oczekiwanie na wszystkich graczy…",
+    "roundControls": "Zakończ rundę",
+    "history": "Historia"
+  },
+  "lobby": {
+    "shareLink": "Udostępnij link",
+    "copy": "Kopiuj",
+    "copied": "✓ Skopiowano",
+    "hint": "Inni gracze otwierają ten link na swoim urządzeniu.",
+    "players": "Gracze",
+    "waitForHost": "Oczekiwanie na hosta, aby rozpoczął grę…",
+    "start": "Rozpocznij grę ({{count}} graczy)",
+    "minPlayers": "Wymagani co najmniej {{min}} gracze."
+  },
+  "join": {
+    "invited": "Zostałeś zaproszony!",
+    "nameLabel": "Twoje imię",
+    "namePlaceholder": "Nazwa gracza",
+    "joining": "Dołączanie…",
+    "join": "Dołącz do gry"
+  },
+  "roundEntry": {
+    "title": "Twoja runda",
+    "pointsLabel": "Punkty (karty na ręce)",
+    "submit": "Zatwierdź",
+    "saving": "Zapisywanie…",
+    "change": "Zmień",
+    "cancel": "Anuluj",
+    "phaseCompleted": "Faza {{phase}} zaliczona",
+    "phaseNotCompleted": "Faza {{phase}} niezaliczona",
+    "below": "< {{n}} pkt",
+    "aboveOrEqual": "≥ {{n}} pkt",
+    "allDone": "🎉 Ukończyłeś wszystkie fazy!"
+  },
+  "scoreCard": {
+    "pts": "pkt",
+    "submitted": "✓ zatwierdzone",
+    "pending": "⏳ oczekuje",
+    "phase": "Faza",
+    "finished": "Faza 10 ukończona! 🎉"
+  },
+  "scoreboard": { "title": "Tablica wyników", "round": "Runda {{n}}" },
+  "hostControls": {
+    "title": "Zakończ rundę",
+    "allReady": "Wszyscy gotowi ✓",
+    "waiting": "Czekanie na {{count}} graczy…",
+    "close": "Zakończ rundę ✓",
+    "waitingBtn": "Oczekiwanie na wszystkich graczy…"
+  },
+  "winner": {
+    "won": "wygrał!",
+    "score": "Faza 10 z {{score}} punktami.",
+    "standings": "Końcowa klasyfikacja"
+  },
+  "history": {
+    "title": "Historia: {{name}}",
+    "noRounds": "Brak rozegranych rund.",
+    "close": "Zamknij",
+    "round": "Runda",
+    "points": "Punkty",
+    "phase": "Faza",
+    "total": "Łącznie",
+    "edit": "Edytuj"
+  },
+  "editRound": {
+    "title": "Edytuj rundę {{n}}",
+    "points": "Punkty",
+    "phaseCompleted": "Faza zaliczona",
+    "phaseNotCompleted": "Faza niezaliczona",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "saving": "Zapisywanie…"
+  },
+  "phases": {
+    "1": "2 trójki",
+    "2": "1 trójka + 1 sekwencja 4",
+    "3": "1 czwórka + 1 sekwencja 4",
+    "4": "1 sekwencja 7",
+    "5": "1 sekwencja 8",
+    "6": "1 sekwencja 9",
+    "7": "2 czwórki",
+    "8": "7 kart jednego koloru",
+    "9": "1 piątka + 1 para",
+    "10": "1 piątka + 1 trójka"
+  }
+}

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import ScoreCard from './ScoreCard';
 
 export default function Scoreboard({
@@ -8,12 +9,16 @@ export default function Scoreboard({
   onShowHistory,
   currentRound,
 }) {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Scoreboard</h2>
+      <div className="mb-3 flex items-center justify-between">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+          {t('scoreboard.title')}
+        </h2>
         {currentRound && (
-          <span className="text-sm text-gray-500">Runde {currentRound}</span>
+          <span className="text-sm text-gray-500">{t('scoreboard.round', { n: currentRound })}</span>
         )}
       </div>
       <div className="space-y-2.5">

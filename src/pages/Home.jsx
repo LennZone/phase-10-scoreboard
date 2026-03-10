@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../hooks/useGame';
 import { useGameHistory } from '../hooks/useGameHistory';
 import Button from '../components/Button';
 import InputField from '../components/InputField';
 import Modal from '../components/Modal';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import { PLAYER_COLORS, TOTAL_PHASES } from '../constants';
 
 function GoogleIcon() {
@@ -18,13 +20,8 @@ function GoogleIcon() {
   );
 }
 
-const STATUS_LABEL = {
-  lobby: { text: 'Warteraum', color: 'text-yellow-400' },
-  active: { text: 'Läuft', color: 'text-green-400' },
-  finished: { text: 'Beendet', color: 'text-gray-500' },
-};
-
 function GameCard({ game, uid, onJoin, onDelete }) {
+  const { t, i18n } = useTranslation();
   const myPlayer = game.players?.[uid];
   const myState = game.playerState?.[uid];
   const color = PLAYER_COLORS[myPlayer?.colorIndex ?? 0] ?? PLAYER_COLORS[0];
@@ -32,52 +29,56 @@ function GameCard({ game, uid, onJoin, onDelete }) {
   const isHost = game.hostUid === uid;
   const isFinished = game.status === 'finished';
   const isWinner = game.winner?.uid === uid;
-  const statusInfo = STATUS_LABEL[game.status] ?? STATUS_LABEL.finished;
-  const date = game.createdAt?.toDate?.()?.toLocaleDateString('de-DE', {
-    day: '2-digit', month: '2-digit', year: 'numeric',
+
+  const statusLabel = {
+    lobby: { text: t('gameCard.lobby'), color: 'text-yellow-400' },
+    active: { text: t('gameCard.active'), color: 'text-green-400' },
+    finished: { text: t('gameCard.finished'), color: 'text-gray-500' },
+  };
+  const statusInfo = statusLabel[game.status] ?? statusLabel.finished;
+
+  const date = game.createdAt?.toDate?.()?.toLocaleDateString(i18n.resolvedLanguage, {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
   }) ?? '–';
 
   return (
     <div className={`rounded-xl border ${color.border} bg-gradient-to-r ${color.gradient} bg-gray-900/80 p-3`}>
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-mono text-xs text-gray-500 tracking-widest">{game.id}</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-xs tracking-widest text-gray-500">{game.id}</span>
             <span className={`text-xs font-semibold ${statusInfo.color}`}>{statusInfo.text}</span>
-            {isWinner && <span className="text-yellow-400 text-xs">🏆</span>}
+            {isWinner && <span className="text-xs text-yellow-400">🏆</span>}
           </div>
-          <div className="text-xs text-gray-500 mt-0.5">
-            {date} · {playerCount} Spieler
-            {isHost && <span className="text-gray-600 ml-1">(Du: Host)</span>}
+          <div className="mt-0.5 text-xs text-gray-500">
+            {date} · {t('gameCard.players', { count: playerCount })}
+            {isHost && <span className="ml-1 text-gray-600">{t('gameCard.youHost')}</span>}
           </div>
         </div>
         {myState && (
-          <div className="text-right shrink-0">
-            <div className="font-bold text-white text-sm">
-              Phase {Math.min(myState.currentPhase, TOTAL_PHASES)}
+          <div className="shrink-0 text-right">
+            <div className="text-sm font-bold text-white">
+              {t('scoreCard.phase')} {Math.min(myState.currentPhase, TOTAL_PHASES)}
             </div>
-            <div className="text-xs text-gray-500">{myState.totalScore} Pkt</div>
+            <div className="text-xs text-gray-500">{myState.totalScore} {t('scoreCard.pts')}</div>
           </div>
         )}
       </div>
 
-      {/* Actions */}
-      <div className="flex gap-2 mt-2.5">
+      <div className="mt-2.5 flex gap-2">
         <Button
           variant={isFinished ? 'ghost' : 'secondary'}
           size="sm"
           className="flex-1"
           onClick={onJoin}
         >
-          {isFinished ? 'Anzeigen' : 'Beitreten'}
+          {isFinished ? t('gameCard.view') : t('gameCard.join')}
         </Button>
         {isHost && (
-          <Button
-            variant="danger"
-            size="sm"
-            onClick={onDelete}
-          >
-            Löschen
+          <Button variant="danger" size="sm" onClick={onDelete}>
+            {t('gameCard.delete')}
           </Button>
         )}
       </div>
@@ -87,12 +88,13 @@ function GameCard({ game, uid, onJoin, onDelete }) {
 
 export default function Home() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, isGoogleUser, signInWithGoogle, signOutUser, createGame, deleteGame } = useGame(null);
   const { games, loading: historyLoading } = useGameHistory(isGoogleUser ? user?.uid : null);
 
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(null); // game to delete
+  const [confirmDelete, setConfirmDelete] = useState(null);
   const [name, setName] = useState('');
   const [gameCode, setGameCode] = useState('');
   const [creating, setCreating] = useState(false);
@@ -147,63 +149,76 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center p-6">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-950 p-6">
       {/* Title */}
       <div className="mb-10 text-center">
-        <h1 className="text-6xl font-black text-white tracking-tight leading-none mb-1">
+        <h1 className="mb-1 text-6xl font-black leading-none tracking-tight text-white">
           Phase <span className="text-red-500">10</span>
         </h1>
-        <p className="text-gray-500 text-sm">Digitaler Scoreboard</p>
+        <p className="text-sm text-gray-500">{t('app.subtitle')}</p>
       </div>
 
       <div className="w-full max-w-xs space-y-3">
+        {/* Language switcher */}
+        <div className="flex justify-end">
+          <LanguageSwitcher />
+        </div>
+
         {/* Google Auth */}
         {isGoogleUser ? (
-          <div className="flex items-center justify-between bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3">
-            <div className="flex items-center gap-3 min-w-0">
+          <div className="flex items-center justify-between rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-3">
+            <div className="flex min-w-0 items-center gap-3">
               {user.photoURL && (
-                <img src={user.photoURL} alt="" className="w-8 h-8 rounded-full shrink-0" />
+                <img src={user.photoURL} alt="" className="h-8 w-8 shrink-0 rounded-full" />
               )}
-              <span className="text-sm text-white font-semibold truncate">{user.displayName}</span>
+              <span className="truncate text-sm font-semibold text-white">{user.displayName}</span>
             </div>
             <button
               onClick={signOutUser}
-              className="text-xs text-gray-500 hover:text-gray-300 shrink-0 ml-2"
+              className="ml-2 shrink-0 text-xs text-gray-500 hover:text-gray-300"
             >
-              Abmelden
+              {t('home.signOut')}
             </button>
           </div>
         ) : (
           <button
             onClick={handleSignIn}
             disabled={authLoading}
-            className="w-full flex items-center justify-center gap-2.5 bg-white hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 text-gray-800 font-semibold rounded-xl px-5 py-3 transition-all active:scale-95"
+            className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white px-5 py-3 font-semibold text-gray-800 transition-all hover:bg-gray-100 active:scale-95 active:bg-gray-200 disabled:opacity-50"
           >
             <GoogleIcon />
-            {authLoading ? 'Anmelden…' : 'Mit Google anmelden'}
+            {authLoading ? t('home.signingIn') : t('home.signIn')}
           </button>
         )}
-        {authError && <p className="text-red-400 text-xs text-center">{authError}</p>}
+        {authError && <p className="text-center text-xs text-red-400">{authError}</p>}
 
         {/* Create + Join */}
-        <Button variant="primary" size="lg" className="w-full" onClick={() => { setCreateError(''); setShowCreate(true); }}>
-          🎮 Neues Spiel erstellen
+        <Button
+          variant="primary"
+          size="lg"
+          className="w-full"
+          onClick={() => {
+            setCreateError('');
+            setShowCreate(true);
+          }}
+        >
+          🎮 {t('home.createGame')}
         </Button>
         <Button variant="secondary" size="lg" className="w-full" onClick={() => setShowJoin(true)}>
-          🔗 Spiel beitreten
+          🔗 {t('home.joinGame')}
         </Button>
 
         {/* My games */}
         {isGoogleUser && (
-          <div className="pt-4 space-y-4">
+          <div className="space-y-4 pt-4">
             {historyLoading ? (
-              <p className="text-gray-600 text-sm text-center py-2">Laden…</p>
+              <p className="py-2 text-center text-sm text-gray-600">{t('game.loading')}</p>
             ) : (
               <>
                 {activeGames.length > 0 && (
                   <div>
-                    <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-                      Aktive Spiele
+                    <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+                      {t('home.activeGames')}
                     </h2>
                     <div className="space-y-2">
                       {activeGames.map((g) => (
@@ -221,8 +236,8 @@ export default function Home() {
 
                 {finishedGames.length > 0 && (
                   <div>
-                    <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-                      Abgeschlossene Spiele
+                    <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+                      {t('home.finishedGames')}
                     </h2>
                     <div className="space-y-2">
                       {finishedGames.map((g) => (
@@ -239,9 +254,7 @@ export default function Home() {
                 )}
 
                 {games.length === 0 && (
-                  <p className="text-gray-600 text-sm text-center py-2">
-                    Noch keine Spiele vorhanden.
-                  </p>
+                  <p className="py-2 text-center text-sm text-gray-600">{t('home.noGames')}</p>
                 )}
               </>
             )}
@@ -249,45 +262,59 @@ export default function Home() {
         )}
 
         {!isGoogleUser && (
-          <p className="text-center text-gray-600 text-xs pt-2">
-            Mit Google anmelden, um Spiele zu speichern und wiederzufinden.
-          </p>
+          <p className="pt-2 text-center text-xs text-gray-600">{t('home.saveHint')}</p>
         )}
       </div>
 
       {/* Create modal */}
-      <Modal isOpen={showCreate} onClose={() => setShowCreate(false)} title="Neues Spiel">
+      <Modal isOpen={showCreate} onClose={() => setShowCreate(false)} title={t('home.create.title')}>
         <InputField
-          label="Dein Name"
+          label={t('home.create.nameLabel')}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Spielername"
+          placeholder={t('home.create.namePlaceholder')}
           onKeyDown={(e) => e.key === 'Enter' && handleCreate()}
           autoFocus
           error={createError}
         />
-        <div className="flex gap-2 mt-4">
-          <Button variant="ghost" className="flex-1" onClick={() => setShowCreate(false)}>Abbrechen</Button>
-          <Button variant="primary" className="flex-1" onClick={handleCreate} disabled={creating || !name.trim()}>
-            {creating ? 'Erstelle…' : 'Erstellen'}
+        <div className="mt-4 flex gap-2">
+          <Button variant="ghost" className="flex-1" onClick={() => setShowCreate(false)}>
+            {t('home.create.cancel')}
+          </Button>
+          <Button
+            variant="primary"
+            className="flex-1"
+            onClick={handleCreate}
+            disabled={creating || !name.trim()}
+          >
+            {creating ? t('home.create.creating') : t('home.create.create')}
           </Button>
         </div>
       </Modal>
 
       {/* Join modal */}
-      <Modal isOpen={showJoin} onClose={() => setShowJoin(false)} title="Spiel beitreten">
+      <Modal isOpen={showJoin} onClose={() => setShowJoin(false)} title={t('home.join.title')}>
         <InputField
-          label="Spielcode"
+          label={t('home.join.codeLabel')}
           value={gameCode}
           onChange={(e) => setGameCode(e.target.value.toUpperCase())}
-          placeholder="z.B. ABC123"
+          placeholder={t('home.join.codePlaceholder')}
           onKeyDown={(e) => e.key === 'Enter' && handleJoin()}
           autoFocus
           className="uppercase tracking-widest"
         />
-        <div className="flex gap-2 mt-4">
-          <Button variant="ghost" className="flex-1" onClick={() => setShowJoin(false)}>Abbrechen</Button>
-          <Button variant="primary" className="flex-1" onClick={handleJoin} disabled={!gameCode.trim()}>Beitreten</Button>
+        <div className="mt-4 flex gap-2">
+          <Button variant="ghost" className="flex-1" onClick={() => setShowJoin(false)}>
+            {t('home.join.cancel')}
+          </Button>
+          <Button
+            variant="primary"
+            className="flex-1"
+            onClick={handleJoin}
+            disabled={!gameCode.trim()}
+          >
+            {t('home.join.join')}
+          </Button>
         </div>
       </Modal>
 
@@ -295,16 +322,22 @@ export default function Home() {
       <Modal
         isOpen={!!confirmDelete}
         onClose={() => setConfirmDelete(null)}
-        title="Spiel löschen?"
+        title={t('home.delete.title')}
       >
-        <p className="text-gray-400 text-sm mb-1">
-          Spiel <span className="font-mono text-white">{confirmDelete?.id}</span> wird unwiderruflich gelöscht.
+        <p className="mb-1 text-sm text-gray-400">
+          {t('home.delete.confirm', { id: confirmDelete?.id })}
         </p>
-        <p className="text-gray-500 text-xs mb-4">Alle Spielerdaten und der Rundenverlauf gehen verloren.</p>
+        <p className="mb-4 text-xs text-gray-500">{t('home.delete.warning')}</p>
         <div className="flex gap-2">
-          <Button variant="ghost" className="flex-1" onClick={() => setConfirmDelete(null)}>Abbrechen</Button>
-          <Button variant="danger" className="flex-1" onClick={() => handleDelete(confirmDelete.id)}>
-            Löschen
+          <Button variant="ghost" className="flex-1" onClick={() => setConfirmDelete(null)}>
+            {t('home.delete.cancel')}
+          </Button>
+          <Button
+            variant="danger"
+            className="flex-1"
+            onClick={() => handleDelete(confirmDelete.id)}
+          >
+            {t('home.delete.delete')}
           </Button>
         </div>
       </Modal>

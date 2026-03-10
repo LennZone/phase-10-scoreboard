@@ -1,25 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import Button from './Button';
 
 export default function TableRow({ roundNumber, score, isHost, onEdit }) {
+  const { t } = useTranslation();
+
   return (
     <tr className="border-b border-gray-800 last:border-0">
-      <td className="py-2.5 px-3 text-gray-400 text-sm">{roundNumber}</td>
-      <td className="py-2.5 px-3 font-bold text-white text-center">{score.points}</td>
-      <td className="py-2.5 px-3 text-center">
+      <td className="px-3 py-2.5 text-sm text-gray-400">{roundNumber}</td>
+      <td className="px-3 py-2.5 text-center font-bold text-white">{score.points}</td>
+      <td className="px-3 py-2.5 text-center">
         {score.phaseCompleted ? (
-          <span className="text-green-400 text-sm font-semibold">✓</span>
+          <span className="text-sm font-semibold text-green-400">✓</span>
         ) : (
           <span className="text-gray-600">–</span>
         )}
       </td>
-      <td className="py-2.5 px-3 text-gray-400 text-sm text-right">{score.totalAfter ?? '–'}</td>
+      <td className="px-3 py-2.5 text-right text-sm text-gray-400">{score.totalAfter ?? '–'}</td>
       {isHost && (
-        <td className="py-2.5 px-3 text-right">
+        <td className="px-3 py-2.5 text-right">
           <button
             onClick={onEdit}
-            className="text-xs text-blue-400 hover:text-blue-300 underline underline-offset-2"
+            className="text-xs text-blue-400 underline underline-offset-2 hover:text-blue-300"
           >
-            Bearbeiten
+            {t('history.edit')}
           </button>
         </td>
       )}

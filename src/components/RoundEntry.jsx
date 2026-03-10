@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PHASES, TOTAL_PHASES } from '../constants';
+import { useTranslation } from 'react-i18next';
+import { TOTAL_PHASES } from '../constants';
 import Button from './Button';
 import InputField from './InputField';
 
 const PHASE_THRESHOLD = 50;
 
 export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }) {
+  const { t } = useTranslation();
   const [points, setPoints] = useState('');
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const isSubmitted = !!pendingSubmission && !editing;
   const phase = Math.min(currentPhase, TOTAL_PHASES);
-  const phaseDesc = PHASES[phase - 1]?.desc ?? '';
 
-  // Phase is automatically completed when points < 50
   const phaseCompleted = points !== '' && Number(points) < PHASE_THRESHOLD;
 
   const handleSubmit = async () => {
@@ -38,17 +38,17 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
 
   if (currentPhase > TOTAL_PHASES) {
     return (
-      <div className="rounded-2xl bg-yellow-900/20 border border-yellow-700 p-4 text-center">
-        <p className="text-yellow-400 font-bold">🎉 Du hast alle Phasen abgeschlossen!</p>
+      <div className="rounded-2xl border border-yellow-700 bg-yellow-900/20 p-4 text-center">
+        <p className="font-bold text-yellow-400">{t('roundEntry.allDone')}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl bg-gray-800/60 border border-gray-700 p-4">
-      <h3 className="font-bold text-white mb-0.5">Deine Runde</h3>
-      <p className="text-xs text-gray-400 mb-4">
-        Phase {phase}: {phaseDesc}
+    <div className="rounded-2xl border border-gray-700 bg-gray-800/60 p-4">
+      <h3 className="mb-0.5 font-bold text-white">{t('roundEntry.title')}</h3>
+      <p className="mb-4 text-xs text-gray-400">
+        {t('scoreCard.phase')} {phase}: {t(`phases.${phase}`)}
       </p>
 
       <AnimatePresence mode="wait">
@@ -58,26 +58,29 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="text-center py-2"
+            className="py-2 text-center"
           >
             <motion.div
               initial={{ scale: 0.5 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="text-green-400 text-2xl font-black mb-1"
+              className="mb-1 text-2xl font-black text-green-400"
             >
-              ✓ {pendingSubmission.points} Punkte
+              ✓ {pendingSubmission.points} {t('scoreCard.pts')}
             </motion.div>
-            <p className="text-sm text-gray-400 mb-4">
-              Phase {phase}{' '}
+            <p className="mb-4 text-sm text-gray-400">
               {pendingSubmission.phaseCompleted ? (
-                <span className="text-green-400">geschafft ✓</span>
+                <span className="text-green-400">
+                  {t('roundEntry.phaseCompleted', { phase })}
+                </span>
               ) : (
-                <span className="text-gray-500">nicht geschafft</span>
+                <span className="text-gray-500">
+                  {t('roundEntry.phaseNotCompleted', { phase })}
+                </span>
               )}
             </p>
             <Button variant="ghost" size="sm" onClick={handleEdit}>
-              Ändern
+              {t('roundEntry.change')}
             </Button>
           </motion.div>
         ) : (
@@ -89,7 +92,7 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
             className="space-y-4"
           >
             <InputField
-              label="Punkte (Handkarten)"
+              label={t('roundEntry.pointsLabel')}
               type="number"
               inputMode="numeric"
               min="0"
@@ -111,9 +114,13 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
               >
                 <span>{phaseCompleted ? '✓' : '✗'}</span>
                 <span>
-                  Phase {phase} {phaseCompleted ? 'geschafft' : 'nicht geschafft'}
-                  <span className="font-normal text-xs ml-1">
-                    ({phaseCompleted ? `< ${PHASE_THRESHOLD} Pkt` : `≥ ${PHASE_THRESHOLD} Pkt`})
+                  {phaseCompleted
+                    ? t('roundEntry.phaseCompleted', { phase })
+                    : t('roundEntry.phaseNotCompleted', { phase })}
+                  <span className="ml-1 text-xs font-normal">
+                    ({phaseCompleted
+                      ? t('roundEntry.below', { n: PHASE_THRESHOLD })
+                      : t('roundEntry.aboveOrEqual', { n: PHASE_THRESHOLD })})
                   </span>
                 </span>
               </motion.div>
@@ -126,7 +133,7 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
               onClick={handleSubmit}
               disabled={saving || points === '' || Number(points) < 0}
             >
-              {saving ? 'Speichern...' : 'Einreichen'}
+              {saving ? t('roundEntry.saving') : t('roundEntry.submit')}
             </Button>
 
             {editing && (
@@ -136,7 +143,7 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
                 className="w-full"
                 onClick={() => setEditing(false)}
               >
-                Abbrechen
+                {t('roundEntry.cancel')}
               </Button>
             )}
           </motion.div>

@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Tableau de Score Digital" },
+  "home": {
+    "signIn": "Se connecter avec Google",
+    "signingIn": "Connexion…",
+    "signOut": "Se déconnecter",
+    "createGame": "Nouvelle partie",
+    "joinGame": "Rejoindre une partie",
+    "myGames": "Mes parties",
+    "activeGames": "Parties actives",
+    "finishedGames": "Parties terminées",
+    "noGames": "Aucune partie.",
+    "saveHint": "Connectez-vous avec Google pour sauvegarder et retrouver vos parties.",
+    "you": "Vous",
+    "host": "Hôte",
+    "create": {
+      "title": "Nouvelle partie",
+      "nameLabel": "Votre nom",
+      "namePlaceholder": "Nom du joueur",
+      "creating": "Création…",
+      "create": "Créer",
+      "cancel": "Annuler"
+    },
+    "join": {
+      "title": "Rejoindre une partie",
+      "codeLabel": "Code de partie",
+      "codePlaceholder": "ex. ABC123",
+      "join": "Rejoindre",
+      "cancel": "Annuler"
+    },
+    "delete": {
+      "title": "Supprimer la partie ?",
+      "confirm": "La partie {{id}} sera supprimée définitivement.",
+      "warning": "Toutes les données des joueurs et l'historique des manches seront perdus.",
+      "delete": "Supprimer",
+      "cancel": "Annuler"
+    }
+  },
+  "gameCard": {
+    "lobby": "Lobby",
+    "active": "Active",
+    "finished": "Terminée",
+    "players": "{{count}} joueurs",
+    "view": "Voir",
+    "join": "Rejoindre",
+    "delete": "Supprimer",
+    "won": "🏆 Gagnée",
+    "youHost": "(Vous : Hôte)"
+  },
+  "game": {
+    "notFound": "Partie introuvable",
+    "notFoundHint": "Vérifiez le code de la partie.",
+    "backHome": "← Retour à l'accueil",
+    "loading": "Chargement…",
+    "round": "Manche",
+    "allReady": "Tous prêts ✓",
+    "waiting": "En attente de {{count}} joueurs…",
+    "gameStarted": "La partie a déjà commencé. Il n'est plus possible de rejoindre.",
+    "closeRound": "Clôturer la manche ✓",
+    "waitingForPlayers": "En attente de tous les joueurs…",
+    "roundControls": "Clôturer la manche",
+    "history": "Historique"
+  },
+  "lobby": {
+    "shareLink": "Partager le lien",
+    "copy": "Copier",
+    "copied": "✓ Copié",
+    "hint": "Les autres joueurs ouvrent ce lien sur leur appareil.",
+    "players": "Joueurs",
+    "waitForHost": "En attente que l'hôte démarre la partie…",
+    "start": "Démarrer la partie ({{count}} joueurs)",
+    "minPlayers": "Au moins {{min}} joueurs requis."
+  },
+  "join": {
+    "invited": "Vous avez été invité !",
+    "nameLabel": "Votre nom",
+    "namePlaceholder": "Nom du joueur",
+    "joining": "Connexion…",
+    "join": "Rejoindre la partie"
+  },
+  "roundEntry": {
+    "title": "Votre manche",
+    "pointsLabel": "Points (cartes en main)",
+    "submit": "Envoyer",
+    "saving": "Enregistrement…",
+    "change": "Modifier",
+    "cancel": "Annuler",
+    "phaseCompleted": "Phase {{phase}} complétée",
+    "phaseNotCompleted": "Phase {{phase}} non complétée",
+    "below": "< {{n}} pts",
+    "aboveOrEqual": "≥ {{n}} pts",
+    "allDone": "🎉 Vous avez complété toutes les phases !"
+  },
+  "scoreCard": {
+    "pts": "pts",
+    "submitted": "✓ envoyé",
+    "pending": "⏳ en attente",
+    "phase": "Phase",
+    "finished": "Phase 10 complétée ! 🎉"
+  },
+  "scoreboard": { "title": "Tableau de score", "round": "Manche {{n}}" },
+  "hostControls": {
+    "title": "Clôturer la manche",
+    "allReady": "Tous prêts ✓",
+    "waiting": "En attente de {{count}} joueur…",
+    "close": "Clôturer la manche ✓",
+    "waitingBtn": "En attente de tous les joueurs…"
+  },
+  "winner": {
+    "won": "a gagné !",
+    "score": "Phase 10 avec {{score}} points.",
+    "standings": "Classement final"
+  },
+  "history": {
+    "title": "Historique : {{name}}",
+    "noRounds": "Aucune manche jouée.",
+    "close": "Fermer",
+    "round": "Manche",
+    "points": "Points",
+    "phase": "Phase",
+    "total": "Total",
+    "edit": "Modifier"
+  },
+  "editRound": {
+    "title": "Modifier la manche {{n}}",
+    "points": "Points",
+    "phaseCompleted": "Phase complétée",
+    "phaseNotCompleted": "Phase non complétée",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saving": "Enregistrement…"
+  },
+  "phases": {
+    "1": "2 brelans",
+    "2": "1 brelan + 1 suite de 4",
+    "3": "1 carré + 1 suite de 4",
+    "4": "1 suite de 7",
+    "5": "1 suite de 8",
+    "6": "1 suite de 9",
+    "7": "2 carrés",
+    "8": "7 cartes de la même couleur",
+    "9": "1 quinte + 1 paire",
+    "10": "1 quinte + 1 brelan"
+  }
+}

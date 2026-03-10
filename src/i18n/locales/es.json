@@ -1,0 +1,145 @@
+{
+  "app": { "title": "Phase 10", "subtitle": "Marcador Digital" },
+  "home": {
+    "signIn": "Iniciar sesión con Google",
+    "signingIn": "Iniciando sesión…",
+    "signOut": "Cerrar sesión",
+    "createGame": "Nueva partida",
+    "joinGame": "Unirse a partida",
+    "myGames": "Mis partidas",
+    "activeGames": "Partidas activas",
+    "finishedGames": "Partidas terminadas",
+    "noGames": "Sin partidas aún.",
+    "saveHint": "Inicia sesión con Google para guardar y encontrar tus partidas.",
+    "you": "Tú",
+    "host": "Anfitrión",
+    "create": {
+      "title": "Nueva partida",
+      "nameLabel": "Tu nombre",
+      "namePlaceholder": "Nombre del jugador",
+      "creating": "Creando…",
+      "create": "Crear",
+      "cancel": "Cancelar"
+    },
+    "join": {
+      "title": "Unirse a partida",
+      "codeLabel": "Código de partida",
+      "codePlaceholder": "ej. ABC123",
+      "join": "Unirse",
+      "cancel": "Cancelar"
+    },
+    "delete": {
+      "title": "¿Eliminar partida?",
+      "confirm": "La partida {{id}} será eliminada permanentemente.",
+      "warning": "Todos los datos de los jugadores y el historial de rondas se perderán.",
+      "delete": "Eliminar",
+      "cancel": "Cancelar"
+    }
+  },
+  "gameCard": {
+    "lobby": "Lobby",
+    "active": "Activa",
+    "finished": "Terminada",
+    "players": "{{count}} jugadores",
+    "view": "Ver",
+    "join": "Unirse",
+    "delete": "Eliminar",
+    "won": "🏆 Ganada",
+    "youHost": "(Tú: Anfitrión)"
+  },
+  "game": {
+    "notFound": "Partida no encontrada",
+    "notFoundHint": "Comprueba el código de la partida.",
+    "backHome": "← Volver al inicio",
+    "loading": "Cargando…",
+    "round": "Ronda",
+    "allReady": "Todos listos ✓",
+    "waiting": "Esperando a {{count}} más…",
+    "gameStarted": "La partida ya ha comenzado. Ya no es posible unirse.",
+    "closeRound": "Cerrar ronda ✓",
+    "waitingForPlayers": "Esperando a todos los jugadores…",
+    "roundControls": "Cerrar ronda",
+    "history": "Historial"
+  },
+  "lobby": {
+    "shareLink": "Compartir enlace",
+    "copy": "Copiar",
+    "copied": "✓ Copiado",
+    "hint": "Los demás jugadores abren este enlace en su dispositivo.",
+    "players": "Jugadores",
+    "waitForHost": "Esperando a que el anfitrión inicie la partida…",
+    "start": "Iniciar partida ({{count}} jugadores)",
+    "minPlayers": "Se necesitan al menos {{min}} jugadores."
+  },
+  "join": {
+    "invited": "¡Has sido invitado!",
+    "nameLabel": "Tu nombre",
+    "namePlaceholder": "Nombre del jugador",
+    "joining": "Uniéndose…",
+    "join": "Unirse a la partida"
+  },
+  "roundEntry": {
+    "title": "Tu ronda",
+    "pointsLabel": "Puntos (cartas en mano)",
+    "submit": "Enviar",
+    "saving": "Guardando…",
+    "change": "Cambiar",
+    "cancel": "Cancelar",
+    "phaseCompleted": "Fase {{phase}} completada",
+    "phaseNotCompleted": "Fase {{phase}} no completada",
+    "below": "< {{n}} pts",
+    "aboveOrEqual": "≥ {{n}} pts",
+    "allDone": "🎉 ¡Has completado todas las fases!"
+  },
+  "scoreCard": {
+    "pts": "pts",
+    "submitted": "✓ enviado",
+    "pending": "⏳ pendiente",
+    "phase": "Fase",
+    "finished": "¡Fase 10 completada! 🎉"
+  },
+  "scoreboard": { "title": "Marcador", "round": "Ronda {{n}}" },
+  "hostControls": {
+    "title": "Cerrar ronda",
+    "allReady": "Todos listos ✓",
+    "waiting": "Esperando a {{count}} jugador…",
+    "close": "Cerrar ronda ✓",
+    "waitingBtn": "Esperando a todos los jugadores…"
+  },
+  "winner": {
+    "won": "¡ha ganado!",
+    "score": "Fase 10 con {{score}} puntos.",
+    "standings": "Clasificación final"
+  },
+  "history": {
+    "title": "Historial: {{name}}",
+    "noRounds": "Aún no se han jugado rondas.",
+    "close": "Cerrar",
+    "round": "Ronda",
+    "points": "Puntos",
+    "phase": "Fase",
+    "total": "Total",
+    "edit": "Editar"
+  },
+  "editRound": {
+    "title": "Editar ronda {{n}}",
+    "points": "Puntos",
+    "phaseCompleted": "Fase completada",
+    "phaseNotCompleted": "Fase no completada",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "saving": "Guardando…"
+  },
+  "phases": {
+    "1": "2 tríos",
+    "2": "1 trío + 1 escalera de 4",
+    "3": "1 cuarteto + 1 escalera de 4",
+    "4": "1 escalera de 7",
+    "5": "1 escalera de 8",
+    "6": "1 escalera de 9",
+    "7": "2 cuartetos",
+    "8": "7 cartas del mismo color",
+    "9": "1 quinteto + 1 pareja",
+    "10": "1 quinteto + 1 trío"
+  }
+}

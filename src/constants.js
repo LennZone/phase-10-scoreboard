@@ -2,19 +2,6 @@ export const TOTAL_PHASES = 10;
 export const MIN_PLAYERS = 2;
 export const MAX_PLAYERS = 6;
 
-export const PHASES = [
-  { num: 1, desc: '2 Drillinge' },
-  { num: 2, desc: '1 Drilling + 1 Vierer-Sequenz' },
-  { num: 3, desc: '1 Vierling + 1 Vierer-Sequenz' },
-  { num: 4, desc: '1 Siebener-Sequenz' },
-  { num: 5, desc: '1 Achter-Sequenz' },
-  { num: 6, desc: '1 Neuner-Sequenz' },
-  { num: 7, desc: '2 Vierlinge' },
-  { num: 8, desc: '7 Karten einer Farbe' },
-  { num: 9, desc: '1 Fünfling + 1 Pärchen' },
-  { num: 10, desc: '1 Fünfling + 1 Drilling' },
-];
-
 // Each color has Tailwind classes for bg, text, border, badge, and gradient
 export const PLAYER_COLORS = [
   {

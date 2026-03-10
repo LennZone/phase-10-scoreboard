@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PLAYER_COLORS, MIN_PLAYERS } from '../constants';
 import Button from './Button';
 
 export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
+  const { t } = useTranslation();
   const [editingUid, setEditingUid] = useState(null);
   const [editingName, setEditingName] = useState('');
   const [copied, setCopied] = useState(false);
@@ -20,7 +22,7 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // fallback: select the text
+      // fallback
     }
   };
 
@@ -43,25 +45,23 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
   return (
     <div className="space-y-6">
       {/* Share link */}
-      <div className="rounded-2xl bg-gray-800/60 border border-gray-700 p-4">
-        <h3 className="font-bold text-white mb-2 text-sm">Link teilen</h3>
+      <div className="rounded-2xl border border-gray-700 bg-gray-800/60 p-4">
+        <h3 className="mb-2 text-sm font-bold text-white">{t('lobby.shareLink')}</h3>
         <div className="flex gap-2">
-          <div className="flex-1 bg-gray-900 rounded-xl px-3 py-2.5 text-xs text-gray-400 font-mono truncate">
+          <div className="flex-1 truncate rounded-xl bg-gray-900 px-3 py-2.5 font-mono text-xs text-gray-400">
             {shareUrl}
           </div>
           <Button variant="secondary" size="sm" onClick={handleCopy}>
-            {copied ? '✓ Kopiert' : 'Kopieren'}
+            {copied ? t('lobby.copied') : t('lobby.copy')}
           </Button>
         </div>
-        <p className="text-xs text-gray-500 mt-2">
-          Mitspieler öffnen diesen Link auf ihrem Gerät.
-        </p>
+        <p className="mt-2 text-xs text-gray-500">{t('lobby.hint')}</p>
       </div>
 
       {/* Player list */}
       <div>
-        <h3 className="font-bold text-white text-sm mb-2">
-          Spieler ({players.length}/{6})
+        <h3 className="mb-2 text-sm font-bold text-white">
+          {t('lobby.players')} ({players.length}/6)
         </h3>
         <div className="space-y-2">
           {players.map((p) => {
@@ -72,7 +72,7 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
                 key={p.uid}
                 className={`flex items-center gap-3 rounded-xl border ${color.border} bg-gradient-to-r ${color.gradient} bg-gray-900/80 px-4 py-3`}
               >
-                <div className={`w-3 h-3 rounded-full shrink-0 ${color.bg}`} />
+                <div className={`h-3 w-3 shrink-0 rounded-full ${color.bg}`} />
 
                 {editingUid === p.uid ? (
                   <input
@@ -84,14 +84,16 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
                       if (e.key === 'Enter') handleNameSave(p.uid);
                       if (e.key === 'Escape') setEditingUid(null);
                     }}
-                    className="flex-1 bg-gray-800 text-white rounded-lg px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-400"
+                    className="flex-1 rounded-lg bg-gray-800 px-2 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-yellow-400"
                   />
                 ) : (
-                  <span className="flex-1 text-white font-semibold text-sm">
+                  <span className="flex-1 text-sm font-semibold text-white">
                     {p.name}
-                    {isMe && <span className="text-gray-400 font-normal ml-1">(Du)</span>}
+                    {isMe && (
+                      <span className="ml-1 font-normal text-gray-400">({t('home.you')})</span>
+                    )}
                     {p.uid === game.hostUid && (
-                      <span className="text-yellow-400 text-xs ml-2">Host</span>
+                      <span className="ml-2 text-xs text-yellow-400">{t('home.host')}</span>
                     )}
                   </span>
                 )}
@@ -101,7 +103,7 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
                     setEditingUid(p.uid);
                     setEditingName(p.name);
                   }}
-                  className="text-gray-500 hover:text-gray-300 text-sm px-1"
+                  className="px-1 text-sm text-gray-500 hover:text-gray-300"
                 >
                   ✎
                 </button>
@@ -115,12 +117,12 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
       {isHost ? (
         <div>
           {players.length < MIN_PLAYERS && (
-            <p className="text-yellow-400 text-sm text-center mb-3">
-              Mindestens {MIN_PLAYERS} Spieler erforderlich.
+            <p className="mb-3 text-center text-sm text-yellow-400">
+              {t('lobby.minPlayers', { min: MIN_PLAYERS })}
             </p>
           )}
           {startError && (
-            <p className="text-red-400 text-sm text-center mb-3">{startError}</p>
+            <p className="mb-3 text-center text-sm text-red-400">{startError}</p>
           )}
           <Button
             variant="success"
@@ -129,13 +131,11 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
             onClick={handleStart}
             disabled={players.length < MIN_PLAYERS}
           >
-            Spiel starten ({players.length} Spieler)
+            {t('lobby.start', { count: players.length })}
           </Button>
         </div>
       ) : (
-        <p className="text-center text-gray-500 text-sm py-4">
-          Warte auf den Host, das Spiel zu starten…
-        </p>
+        <p className="py-4 text-center text-sm text-gray-500">{t('lobby.waitForHost')}</p>
       )}
     </div>
   );
