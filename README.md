@@ -2,7 +2,7 @@
 
 A real-time digital scoreboard for the card game Phase 10. Replaces pen and paper with automatic phase tracking, live score sync across all players' devices, and a game history tied to your Google account.
 
-![Phase 10 Scoreboard](https://img.shields.io/badge/version-0.1.0-red) ![License](https://img.shields.io/badge/license-MIT-blue) ![Deploy](https://img.shields.io/badge/deployed-GitHub%20Pages-green)
+![Version](https://img.shields.io/github/package-json/v/LennZone/phase-10-score-tracker) ![License](https://img.shields.io/badge/license-MIT-blue) ![Deploy](https://img.shields.io/badge/deployed-GitHub%20Pages-green)
 
 **Live:** [lennzone.github.io/phase-10-score-tracker](https://lennzone.github.io/phase-10-score-tracker/)
 
