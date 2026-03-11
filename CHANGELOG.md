@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/LennZone/phase-10-scoreboard/compare/v1.1.0...v1.2.0) (2026-03-11)
+
+
+### Features
+
+* add DropdownPanel component for floating menus and popovers ([0c12ced](https://github.com/LennZone/phase-10-scoreboard/commit/0c12cede1911edb46699c787993a21f85dee3063))
+* integrate DropdownPanel into LanguageSwitcher and clean up Game header ([f335c25](https://github.com/LennZone/phase-10-scoreboard/commit/f335c255d0abbe67ce51b5301ea7533ddd01b0f1))
+* new design ([92582b1](https://github.com/LennZone/phase-10-scoreboard/commit/92582b1be7ed7f8d8d4c724b173d698d6c2aa479))
+
+
+### Bug Fixes
+
+* **de:** correct subtitle translation in German localization ([008ccda](https://github.com/LennZone/phase-10-scoreboard/commit/008ccda21b0ee4a402b999e306b66dfa35e91ab9))
+
 ## [1.1.0](https://github.com/LennZone/phase-10-scoreboard/compare/v1.0.1...v1.1.0) (2026-03-10)
 
 
