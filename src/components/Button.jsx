@@ -1,15 +1,18 @@
 const variants = {
-  primary: 'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold',
-  secondary: 'bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-white',
-  success: 'bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold',
-  ghost: 'bg-transparent hover:bg-gray-800 active:bg-gray-700 text-gray-300 border border-gray-600',
-  danger: 'bg-red-900 hover:bg-red-800 active:bg-red-700 text-white',
+  primary:
+    'bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-semibold shadow-sm shadow-violet-900/20',
+  secondary: 'bg-white/5 hover:bg-white/10 active:bg-white/15 text-white border border-white/10',
+  success:
+    'bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold shadow-sm shadow-emerald-900/20',
+  ghost: 'bg-transparent hover:bg-white/5 active:bg-white/10 text-slate-400 border border-white/10',
+  danger:
+    'bg-red-900/20 hover:bg-red-900/40 active:bg-red-900/60 text-red-400 border border-red-700/40',
 };
 
 const sizes = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-5 py-2.5 text-base',
-  lg: 'px-6 py-4 text-lg',
+  sm: 'h-8 px-3 text-sm',
+  md: 'h-10 px-5 text-sm font-medium',
+  lg: 'h-12 px-6 text-sm font-medium',
 };
 
 export default function Button({
@@ -21,7 +24,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`rounded-xl transition-all duration-150 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-lg transition-all duration-150 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100 ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
       {children}

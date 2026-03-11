@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        game: ['Nunito', 'system-ui', 'sans-serif'],
+        game: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

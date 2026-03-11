@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { TOTAL_PHASES } from '../constants';
 import Button from './Button';
 import InputField from './InputField';
+import { CheckIcon, XIcon } from './Icons';
 
 const PHASE_THRESHOLD = 50;
 
@@ -15,7 +16,6 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
 
   const isSubmitted = !!pendingSubmission && !editing;
   const phase = Math.min(currentPhase, TOTAL_PHASES);
-
   const phaseCompleted = points !== '' && Number(points) < PHASE_THRESHOLD;
 
   const handleSubmit = async () => {
@@ -30,24 +30,22 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
   };
 
   const handleEdit = () => {
-    if (pendingSubmission) {
-      setPoints(String(pendingSubmission.points ?? ''));
-    }
+    if (pendingSubmission) setPoints(String(pendingSubmission.points ?? ''));
     setEditing(true);
   };
 
   if (currentPhase > TOTAL_PHASES) {
     return (
-      <div className="rounded-2xl border border-yellow-700 bg-yellow-900/20 p-4 text-center">
-        <p className="font-bold text-yellow-400">{t('roundEntry.allDone')}</p>
+      <div className="rounded-2xl border border-amber-700/40 bg-amber-900/10 p-4 text-center backdrop-blur">
+        <p className="text-sm font-medium text-amber-400">{t('roundEntry.allDone')}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-gray-700 bg-gray-800/60 p-4">
-      <h3 className="mb-0.5 font-bold text-white">{t('roundEntry.title')}</h3>
-      <p className="mb-4 text-xs text-gray-400">
+    <div className="glass-card rounded-2xl p-4">
+      <h3 className="mb-0.5 text-sm font-semibold text-white">{t('roundEntry.title')}</h3>
+      <p className="mb-4 text-xs text-slate-400">
         {t('scoreCard.phase')} {phase}: {t(`phases.${phase}`)}
       </p>
 
@@ -64,17 +62,17 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
               initial={{ scale: 0.5 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="mb-1 text-2xl font-black text-green-400"
+              className="mb-1 text-2xl font-bold tabular-nums text-emerald-400"
             >
-              ✓ {pendingSubmission.points} {t('scoreCard.pts')}
+              {pendingSubmission.points} {t('scoreCard.pts')}
             </motion.div>
-            <p className="mb-4 text-sm text-gray-400">
+            <p className="mb-4 text-sm">
               {pendingSubmission.phaseCompleted ? (
-                <span className="text-green-400">
+                <span className="text-emerald-400">
                   {t('roundEntry.phaseCompleted', { phase })}
                 </span>
               ) : (
-                <span className="text-gray-500">
+                <span className="text-slate-500">
                   {t('roundEntry.phaseNotCompleted', { phase })}
                 </span>
               )}
@@ -108,19 +106,25 @@ export default function RoundEntry({ currentPhase, pendingSubmission, onSubmit }
                 key={phaseCompleted ? 'success' : 'fail'}
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`flex items-center gap-2 text-sm font-semibold ${
-                  phaseCompleted ? 'text-green-400' : 'text-gray-500'
+                className={`flex items-center gap-2 text-sm font-medium ${
+                  phaseCompleted ? 'text-emerald-400' : 'text-slate-500'
                 }`}
               >
-                <span>{phaseCompleted ? '✓' : '✗'}</span>
+                {phaseCompleted ? (
+                  <CheckIcon className="h-4 w-4 shrink-0" />
+                ) : (
+                  <XIcon className="h-4 w-4 shrink-0" />
+                )}
                 <span>
                   {phaseCompleted
                     ? t('roundEntry.phaseCompleted', { phase })
                     : t('roundEntry.phaseNotCompleted', { phase })}
-                  <span className="ml-1 text-xs font-normal">
-                    ({phaseCompleted
+                  <span className="ml-1 text-xs font-normal opacity-70">
+                    (
+                    {phaseCompleted
                       ? t('roundEntry.below', { n: PHASE_THRESHOLD })
-                      : t('roundEntry.aboveOrEqual', { n: PHASE_THRESHOLD })})
+                      : t('roundEntry.aboveOrEqual', { n: PHASE_THRESHOLD })}
+                    )
                   </span>
                 </span>
               </motion.div>
