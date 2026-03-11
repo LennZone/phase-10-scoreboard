@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ChevronDownIcon } from './Icons';
 
 const LANGUAGES = [
   { code: 'en', flag: '🇬🇧', label: 'English' },
@@ -31,16 +32,16 @@ export default function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-xl bg-gray-800 border border-gray-700 px-2.5 py-1.5 text-sm hover:bg-gray-700 transition-colors"
+        className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-sm transition-colors hover:bg-white/10"
         aria-label="Select language"
       >
         <span className="text-base leading-none">{currentLang.flag}</span>
-        <span className="text-gray-300 text-xs">{currentLang.code.toUpperCase()}</span>
-        <span className="text-gray-500 text-xs">▾</span>
+        <span className="text-xs font-medium text-slate-300">{currentLang.code.toUpperCase()}</span>
+        <ChevronDownIcon className="h-3 w-3 text-slate-400" />
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-1 z-50 bg-gray-800 border border-gray-700 rounded-xl shadow-xl overflow-hidden min-w-[160px]">
+        <div className="glass-card absolute right-0 z-50 mt-1 min-w-[160px] overflow-hidden rounded-xl">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
@@ -48,8 +49,9 @@ export default function LanguageSwitcher() {
                 i18n.changeLanguage(lang.code);
                 setOpen(false);
               }}
-              className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-sm text-left hover:bg-gray-700 transition-colors ${lang.code === i18n.resolvedLanguage ? 'text-white font-semibold' : 'text-gray-300'
-                }`}
+              className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-sm transition-colors hover:bg-white/5 ${
+                lang.code === i18n.resolvedLanguage ? 'font-semibold text-white' : 'text-slate-300'
+              }`}
             >
               <span className="text-base leading-none">{lang.flag}</span>
               <span>{lang.label}</span>

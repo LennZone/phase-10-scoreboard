@@ -12,6 +12,7 @@ import Button from '../components/Button';
 import InputField from '../components/InputField';
 import TableRow from '../components/TableRow';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { CheckIcon, XIcon } from '../components/Icons';
 
 export default function Game() {
   const { gameId } = useParams();
@@ -45,27 +46,26 @@ export default function Game() {
   const [editingRound, setEditingRound] = useState(null);
   const [editSaving, setEditSaving] = useState(false);
 
-  const editPhaseCompleted =
-    editingRound?.points !== '' && Number(editingRound?.points) < 50;
+  const editPhaseCompleted = editingRound?.points !== '' && Number(editingRound?.points) < 50;
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950">
-        <div className="animate-pulse text-lg text-white">{t('game.loading')}</div>
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="animate-pulse text-lg text-slate-500">{t('game.loading')}</div>
       </div>
     );
   }
 
   if (error || !game) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950 p-6 text-center">
+      <div className="flex min-h-screen items-center justify-center p-6 text-center">
         <div>
-          <div className="mb-4 text-5xl">🎴</div>
+          <div className="mb-4 text-5xl text-slate-600">×</div>
           <h2 className="mb-2 text-xl font-bold text-white">{t('game.notFound')}</h2>
-          <p className="mb-6 text-sm text-gray-400">{error ?? t('game.notFoundHint')}</p>
+          <p className="mb-6 text-sm text-slate-400">{error ?? t('game.notFoundHint')}</p>
           <button
             onClick={() => navigate('/')}
-            className="text-sm text-gray-400 underline underline-offset-4 transition-colors hover:text-white"
+            className="text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-white"
           >
             {t('game.backHome')}
           </button>
@@ -76,12 +76,12 @@ export default function Game() {
 
   if (!isInGame && game.status === 'lobby') {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950 p-6">
+      <div className="flex min-h-screen items-center justify-center p-6">
         <div className="w-full max-w-xs">
           <h1 className="mb-1 text-center text-5xl font-black leading-none text-white">
-            Phase <span className="text-red-500">10</span>
+            Phase <span className="text-violet-400">10</span>
           </h1>
-          <p className="mb-8 text-center text-sm text-gray-500">{t('join.invited')}</p>
+          <p className="mb-8 text-center text-sm text-slate-500">{t('join.invited')}</p>
 
           <InputField
             label={t('join.nameLabel')}
@@ -130,19 +130,15 @@ export default function Game() {
 
   if (!isInGame) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950 p-6 text-center">
-        <p className="text-gray-400">{t('game.gameStarted')}</p>
+      <div className="flex min-h-screen items-center justify-center p-6 text-center">
+        <p className="text-slate-500">{t('game.gameStarted')}</p>
       </div>
     );
   }
 
   if (game.status === 'finished') {
     return (
-      <WinnerScreen
-        winner={game.winner}
-        players={game.players}
-        sortedPlayers={sortedPlayers}
-      />
+      <WinnerScreen winner={game.winner} players={game.players} sortedPlayers={sortedPlayers} />
     );
   }
 
@@ -156,24 +152,27 @@ export default function Game() {
       : [];
 
   return (
-    <div className="font-game min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen font-game">
       {/* Sticky header */}
-      <header className="sticky top-0 z-30 border-b border-gray-800 bg-gray-900/90 px-4 py-3 backdrop-blur">
+      <header className="border-white/8 sticky top-0 z-30 border-b bg-[#070711]/80 px-4 py-3 backdrop-blur-xl">
         <div className="mx-auto flex max-w-2xl items-center justify-between">
           <div>
-            <h1 className="text-lg font-black leading-none" onClick={() => navigate('/')}>
-              Phase <span className="text-red-500">10</span>
+            <h1
+              className="cursor-pointer text-lg font-black leading-none text-white"
+              onClick={() => navigate('/')}
+            >
+              Phase <span className="text-violet-400">10</span>
             </h1>
-            <p className="font-mono text-xs tracking-widest text-gray-500">{gameId}</p>
+            <p className="font-mono text-xs tracking-widest text-slate-500">{gameId}</p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {game.status === 'active' && (
               <div className="text-right">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-bold text-white">
                   {t('game.round')} {game.currentRound}
                 </div>
-                <div className={`text-xs ${allSubmitted ? 'text-green-400' : 'text-yellow-500'}`}>
+                <div className={`text-xs ${allSubmitted ? 'text-emerald-400' : 'text-amber-400'}`}>
                   {submittedCount}/{totalPlayers}
                 </div>
               </div>
@@ -213,10 +212,10 @@ export default function Game() {
             />
 
             {isHost && (
-              <div className="rounded-2xl border border-gray-700 bg-gray-800/60 p-4">
+              <div className="glass-card rounded-2xl p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-gray-300">{t('hostControls.title')}</h3>
-                  <span className="text-xs text-gray-500">
+                  <h3 className="text-sm font-bold text-slate-300">{t('hostControls.title')}</h3>
+                  <span className="text-xs text-slate-500">
                     {allSubmitted
                       ? t('hostControls.allReady')
                       : t('hostControls.waiting', { count: totalPlayers - submittedCount })}
@@ -228,11 +227,20 @@ export default function Game() {
                     const submitted = !!game.pendingSubmissions?.[p.uid];
                     return (
                       <div key={p.uid} className="flex justify-between text-sm">
-                        <span className="text-gray-400">{p.name}</span>
-                        <span className={submitted ? 'text-green-400' : 'text-yellow-500'}>
-                          {submitted
-                            ? `✓ ${game.pendingSubmissions[p.uid].points} ${t('scoreCard.pts')}`
-                            : '⏳'}
+                        <span className="text-slate-300">{p.name}</span>
+                        <span
+                          className={`flex items-center gap-1 ${
+                            submitted ? 'text-emerald-400' : 'text-slate-600'
+                          }`}
+                        >
+                          {submitted ? (
+                            <>
+                              <CheckIcon className="h-3.5 w-3.5" />
+                              {game.pendingSubmissions[p.uid].points} {t('scoreCard.pts')}
+                            </>
+                          ) : (
+                            '–'
+                          )}
                         </span>
                       </div>
                     );
@@ -268,7 +276,7 @@ export default function Game() {
             <div className="-mx-2 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-gray-700 text-xs text-gray-500">
+                  <tr className="border-white/8 border-b text-xs text-slate-500">
                     <th className="px-3 py-2 text-left">{t('history.round')}</th>
                     <th className="px-3 py-2 text-center">{t('history.points')}</th>
                     <th className="px-3 py-2 text-center">{t('history.phase')}</th>
@@ -294,7 +302,7 @@ export default function Game() {
                   ))}
                   {historyRounds.length === 0 && (
                     <tr>
-                      <td colSpan={5} className="py-4 text-center text-sm text-gray-500">
+                      <td colSpan={5} className="py-4 text-center text-sm text-slate-500">
                         {t('history.noRounds')}
                       </td>
                     </tr>
@@ -338,13 +346,29 @@ export default function Game() {
             />
 
             {editingRound.points !== '' && (
-              <p
-                className={`mt-3 text-sm font-semibold ${editPhaseCompleted ? 'text-green-400' : 'text-gray-500'}`}
+              <div
+                className={`mt-3 flex items-center gap-2 text-sm font-medium ${
+                  editPhaseCompleted ? 'text-emerald-400' : 'text-slate-500'
+                }`}
               >
-                {editPhaseCompleted
-                  ? `✓ ${t('editRound.phaseCompleted')} (${t('roundEntry.below', { n: 50 })})`
-                  : `✗ ${t('editRound.phaseNotCompleted')} (${t('roundEntry.aboveOrEqual', { n: 50 })})`}
-              </p>
+                {editPhaseCompleted ? (
+                  <CheckIcon className="h-4 w-4 shrink-0" />
+                ) : (
+                  <XIcon className="h-4 w-4 shrink-0" />
+                )}
+                <span>
+                  {editPhaseCompleted
+                    ? t('editRound.phaseCompleted')
+                    : t('editRound.phaseNotCompleted')}
+                  <span className="ml-1 text-xs font-normal opacity-70">
+                    (
+                    {editPhaseCompleted
+                      ? t('roundEntry.below', { n: 50 })
+                      : t('roundEntry.aboveOrEqual', { n: 50 })}
+                    )
+                  </span>
+                </span>
+              </div>
             )}
 
             <div className="mt-4 flex gap-2">

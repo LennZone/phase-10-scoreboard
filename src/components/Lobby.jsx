@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PLAYER_COLORS, MIN_PLAYERS } from '../constants';
 import Button from './Button';
+import { PencilIcon } from './Icons';
 
 export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
   const { t } = useTranslation();
@@ -45,22 +46,22 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
   return (
     <div className="space-y-6">
       {/* Share link */}
-      <div className="rounded-2xl border border-gray-700 bg-gray-800/60 p-4">
-        <h3 className="mb-2 text-sm font-bold text-white">{t('lobby.shareLink')}</h3>
+      <div className="glass-card rounded-2xl p-4">
+        <h3 className="mb-3 text-sm font-semibold text-white">{t('lobby.shareLink')}</h3>
         <div className="flex gap-2">
-          <div className="flex-1 truncate rounded-xl bg-gray-900 px-3 py-2.5 font-mono text-xs text-gray-400">
+          <div className="border-white/8 flex-1 truncate rounded-md border bg-white/[0.04] px-3 py-2 font-mono text-xs text-slate-400">
             {shareUrl}
           </div>
           <Button variant="secondary" size="sm" onClick={handleCopy}>
             {copied ? t('lobby.copied') : t('lobby.copy')}
           </Button>
         </div>
-        <p className="mt-2 text-xs text-gray-500">{t('lobby.hint')}</p>
+        <p className="mt-2 text-xs text-slate-500">{t('lobby.hint')}</p>
       </div>
 
       {/* Player list */}
       <div>
-        <h3 className="mb-2 text-sm font-bold text-white">
+        <h3 className="mb-2.5 text-sm font-semibold text-white">
           {t('lobby.players')} ({players.length}/6)
         </h3>
         <div className="space-y-2">
@@ -68,11 +69,8 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
             const color = PLAYER_COLORS[p.colorIndex ?? 0] ?? PLAYER_COLORS[0];
             const isMe = p.uid === user?.uid;
             return (
-              <div
-                key={p.uid}
-                className={`flex items-center gap-3 rounded-xl border ${color.border} bg-gradient-to-r ${color.gradient} bg-gray-900/80 px-4 py-3`}
-              >
-                <div className={`h-3 w-3 shrink-0 rounded-full ${color.bg}`} />
+              <div key={p.uid} className="glass-card flex items-center gap-3 rounded-xl px-4 py-3">
+                <div className={`h-2.5 w-2.5 shrink-0 rounded-full ${color.bg}`} />
 
                 {editingUid === p.uid ? (
                   <input
@@ -84,16 +82,16 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
                       if (e.key === 'Enter') handleNameSave(p.uid);
                       if (e.key === 'Escape') setEditingUid(null);
                     }}
-                    className="flex-1 rounded-lg bg-gray-800 px-2 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-yellow-400"
+                    className="flex-1 rounded-md border border-white/10 bg-white/5 px-2 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-violet-500"
                   />
                 ) : (
-                  <span className="flex-1 text-sm font-semibold text-white">
+                  <span className="flex-1 text-sm font-medium text-white">
                     {p.name}
                     {isMe && (
-                      <span className="ml-1 font-normal text-gray-400">({t('home.you')})</span>
+                      <span className="ml-1 font-normal text-slate-500">({t('home.you')})</span>
                     )}
                     {p.uid === game.hostUid && (
-                      <span className="ml-2 text-xs text-yellow-400">{t('home.host')}</span>
+                      <span className="ml-2 text-xs text-amber-400">{t('home.host')}</span>
                     )}
                   </span>
                 )}
@@ -103,9 +101,9 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
                     setEditingUid(p.uid);
                     setEditingName(p.name);
                   }}
-                  className="px-1 text-sm text-gray-500 hover:text-gray-300"
+                  className="p-1 text-slate-500 hover:text-slate-300"
                 >
-                  ✎
+                  <PencilIcon />
                 </button>
               </div>
             );
@@ -117,13 +115,11 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
       {isHost ? (
         <div>
           {players.length < MIN_PLAYERS && (
-            <p className="mb-3 text-center text-sm text-yellow-400">
+            <p className="mb-3 text-center text-sm text-amber-400">
               {t('lobby.minPlayers', { min: MIN_PLAYERS })}
             </p>
           )}
-          {startError && (
-            <p className="mb-3 text-center text-sm text-red-400">{startError}</p>
-          )}
+          {startError && <p className="mb-3 text-center text-sm text-red-400">{startError}</p>}
           <Button
             variant="success"
             size="lg"
@@ -135,7 +131,7 @@ export default function Lobby({ game, user, isHost, onStart, onUpdateName }) {
           </Button>
         </div>
       ) : (
-        <p className="py-4 text-center text-sm text-gray-500">{t('lobby.waitForHost')}</p>
+        <p className="py-4 text-center text-sm text-slate-500">{t('lobby.waitForHost')}</p>
       )}
     </div>
   );

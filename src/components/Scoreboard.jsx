@@ -14,11 +14,13 @@ export default function Scoreboard({
   return (
     <div>
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
           {t('scoreboard.title')}
         </h2>
         {currentRound && (
-          <span className="text-sm text-gray-500">{t('scoreboard.round', { n: currentRound })}</span>
+          <span className="text-sm text-slate-500">
+            {t('scoreboard.round', { n: currentRound })}
+          </span>
         )}
       </div>
       <div className="space-y-2.5">
@@ -39,9 +41,7 @@ export default function Scoreboard({
                 player={player}
                 rank={index + 1}
                 pendingSubmission={pendingSubmissions?.[player.uid]}
-                onShowHistory={
-                  isHost && onShowHistory ? () => onShowHistory(player) : undefined
-                }
+                onShowHistory={isHost && onShowHistory ? () => onShowHistory(player) : undefined}
               />
             </motion.div>
           ))}

@@ -4,16 +4,20 @@
 
 @layer base {
   html {
-    font-family: 'Nunito', system-ui, sans-serif;
+    color-scheme: dark;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   body {
-    @apply bg-gray-950 text-white;
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior: none;
+    @apply bg-[#070711] text-white;
+    background-image:
+      radial-gradient(ellipse at 15% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 
-  /* Improve number input on mobile */
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -21,5 +25,37 @@
   }
   input[type='number'] {
     -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .glass-card {
+    position: relative;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 4px 32px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .glass-card::before {
+    position: absolute;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.55) 0%,
+      rgba(99, 102, 241, 0.22) 40%,
+      rgba(59, 130, 246, 0.1) 100%
+    );
+    padding: 1px;
+    pointer-events: none;
+    content: '';
   }
 }
