@@ -82,8 +82,12 @@ export function useGame(gameId) {
 
   const createGame = useCallback(
     async (hostName) => {
-      const currentUser = user || auth.currentUser;
-      if (!currentUser) throw new Error('Nicht angemeldet.');
+      let currentUser = user || auth.currentUser;
+      if (!currentUser) {
+        const result = await signInAnonymously(auth);
+        currentUser = result.user;
+        setUser(currentUser);
+      }
       const gid = generateGameId();
       // Anonymous games get a TTL of 24h; Google-signed-in games are kept indefinitely
       const ttl = currentUser.isAnonymous
