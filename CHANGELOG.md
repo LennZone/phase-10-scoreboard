@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/LennZone/phase-10-scoreboard/compare/v1.2.1...v1.3.0) (2026-03-13)
+
+
+### Features
+
+* enable deletion of running games by participants ([3666677](https://github.com/LennZone/phase-10-scoreboard/commit/3666677467d08dc0136efef6cb37f65eb6f09709))
+* enable deletion of running games by participants ([4f823d3](https://github.com/LennZone/phase-10-scoreboard/commit/4f823d355e1a77c396c65056432d55d878bbe538))
+
 ## [1.2.1](https://github.com/LennZone/phase-10-scoreboard/compare/v1.2.0...v1.2.1) (2026-03-13)
 
 
