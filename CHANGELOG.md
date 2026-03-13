@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/LennZone/phase-10-scoreboard/compare/v1.2.0...v1.2.1) (2026-03-13)
+
+
+### Bug Fixes
+
+* allow game creation without prior login by signing in anonymously ([024989b](https://github.com/LennZone/phase-10-scoreboard/commit/024989b6e54293728a2649efb13e2efdc2321423))
+* allow game creation without prior login by signing in anonymously ([be04a39](https://github.com/LennZone/phase-10-scoreboard/commit/be04a3914aab2ad9056837f757ba90304862b94c))
+
 ## [1.2.0](https://github.com/LennZone/phase-10-scoreboard/compare/v1.1.0...v1.2.0) (2026-03-11)
 
 
