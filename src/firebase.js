@@ -25,7 +25,10 @@ export const auth = getAuth(app);
 //     match /games/{gameId} {
 //       allow read: if true;
 //       allow create: if request.auth != null;
-//       allow delete: if request.auth != null && resource.data.hostUid == request.auth.uid;
+//       allow delete: if request.auth != null && (
+//         resource.data.hostUid == request.auth.uid ||
+//         request.auth.uid in resource.data.participants
+//       );
 //       allow update: if request.auth != null && (
 //         // Host kann alles
 //         resource.data.hostUid == request.auth.uid ||

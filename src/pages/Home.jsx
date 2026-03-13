@@ -96,11 +96,9 @@ function GameCard({ game, uid, onJoin, onDelete }) {
         >
           {isFinished ? t('gameCard.view') : t('gameCard.join')}
         </Button>
-        {isHost && (
-          <Button variant="danger" size="sm" onClick={onDelete}>
-            {t('gameCard.delete')}
-          </Button>
-        )}
+        <Button variant="danger" size="sm" onClick={onDelete}>
+          {t('gameCard.delete')}
+        </Button>
       </div>
     </div>
   );
